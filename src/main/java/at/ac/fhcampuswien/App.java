@@ -94,10 +94,29 @@ public class App {
                 } return true;
 
             }
+//Aufgabe 5
 
 
-            public static int checkDigit(int [] code) {
 
+
+
+
+//Aufgabe 6
+            public static int checkDigit(int[] code) {
+                int sum = 0;
+                int x;
+                for (x = 0;  x < code.length; x++) {
+                    sum = sum + code[x] * (x+2);
+                }
+                int sum2 = sum % 11;
+                int number = 11 - sum2;
+
+                if (number == 10) {
+                    return 0; }
+                if (number == 11) {
+                    return 5;
+                } else
+                return number;
             }
 
 
