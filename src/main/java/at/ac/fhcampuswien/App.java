@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -30,6 +31,77 @@ public class App {
             }
 
 
+    public static long[] lcg(long seed){
+        final long m = (long) Math.pow(2,31);
+        final int c = 12345;
+        final int a = 1103515245;
+
+        long[] numbers = new long[10];
+
+        for (int i = 0 ; i < 10 ; i++){
+            if(i==0){
+                numbers[i] = (a * seed + c) % m;
+            } else {
+                numbers[i] = (a * numbers[i-1] + c) % m;
+            }
+        }
+        return numbers;
+    }
+
+    //Aufgabe 3
+
+    public static void guessingGame(int numberToGuess) {
+        Scanner scan = new Scanner(System.in);
+        for (int i = 1; i <= 10; i++) {
+            System.out.print("Guess number " + i + ": ");
+            int guessing = scan.nextInt();
+            if (i == 10) {
+                if (numberToGuess!= guessing) {
+                    System.out.println("You lost! Have you ever heard of divide & conquer?");
+                    break;
+                } else {
+                    System.out.println("You won wisenheimer!");
+                }
+            }
+            if (numberToGuess < guessing) {
+                System.out.println("The number AI picked is lower than your guess.");
+            } else if (numberToGuess > guessing) {
+                System.out.println("The number AI picked is higher than your guess.");
+            } else {
+                System.out.println("You won wisenheimer!");
+               break;
+            }
+        }
+    }
+
+
+    public static int randomNumberBetweenOneAndHundred() {
+        Random numb = new Random();
+        return numb.nextInt(99) + 1;
+    }
+
+            public static boolean swapArrays(int [] arr1, int [] arr2) {
+
+                int arrayLength1=arr1.length;
+                int arrayLength2=arr2.length;
+                if (arrayLength1 != arrayLength2) {
+                    return false;
+                } for (int i = 0; i < arrayLength1; i++) {
+                    int array3 = arr2[i];
+                    arr2[i] = arr1[i];
+                    arr1[i] = array3;
+
+                } return true;
+
+            }
+
+
+            public static int checkDigit(int [] code) {
+
+            }
+
+
+
 
 
 
@@ -47,6 +119,15 @@ if(numbers1.length != numbers2.length)
         // etc.
 
         oneMonthCalendar(28,2);
+
+
+        System.out.println(Arrays.toString(lcg(1)));
+
+
+        guessingGame(randomNumberBetweenOneAndHundred());;
+
+
+        swapArrays(new int[]{1,3,4,5}, new int[]{2, 3, 5});
 
 
        /* for (int i = 0; i < args.length; i++) {
