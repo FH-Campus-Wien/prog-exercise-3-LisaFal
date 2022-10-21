@@ -9,7 +9,7 @@ public class App {
     // Implement all methods as public static
 
 
-
+//Aufgabe 1
         public static void oneMonthCalendar(int numberDays, int startingDay){
 
             int i;
@@ -30,25 +30,25 @@ public class App {
                 } System.out.println();
             }
 
-
-    public static long[] lcg(long seed){
-        final long m = (long) Math.pow(2,31);
+//Aufgabe 2
+    public static long[] lcg(long seed) {
+        final long m = (long) Math.pow(2, 31);
         final int c = 12345;
         final int a = 1103515245;
 
         long[] numbers = new long[10];
 
-        for (int i = 0 ; i < 10 ; i++){
-            if(i==0){
+        for (int i = 0; i < 10; i++) {
+            if (i == 0) {
                 numbers[i] = (a * seed + c) % m;
             } else {
-                numbers[i] = (a * numbers[i-1] + c) % m;
+                numbers[i] = (a * numbers[i - 1] + c) % m;
             }
         }
         return numbers;
     }
 
-    //Aufgabe 3
+        //Aufgabe 3
 
     public static void guessingGame(int numberToGuess) {
         Scanner scan = new Scanner(System.in);
@@ -80,6 +80,7 @@ public class App {
         return numb.nextInt(99) + 1;
     }
 
+    // Aufgabe 4
             public static boolean swapArrays(int [] arr1, int [] arr2) {
 
                 int arrayLength1=arr1.length;
@@ -96,7 +97,29 @@ public class App {
             }
 //Aufgabe 5
 
+    public static String camelCase(String textInput) {
+        char[] inputArr = textInput.toCharArray();
 
+        for (int i = 0; i < inputArr.length; i++) {
+            if (i == 0) {
+                    if (inputArr[i] >= 'a' && inputArr[i] <= 'z') {
+                        inputArr[i] -= 32;
+                    }
+            }
+                if (i >= 1 && inputArr[i - 1] == ' ' && inputArr[i] >= 'a' && inputArr[i] <= 'z') {
+                    inputArr[i] -= 32;
+                }
+                if (i >= 1 && inputArr[i - 1] != ' ' && inputArr[i] >= 'A' && inputArr[i] <= 'Z') {
+                    inputArr[i] += 32;
+                }
+            }
+        // muss in eigener for-Schleife sein - Großbuchstaben sonst nicht mehr möglich
+        for(int i = 1; i < inputArr.length; i++)
+        if (inputArr[i] >= 0 && inputArr[i] <= '@' || inputArr[i] >= '[' && inputArr[i] <= 96 || inputArr[i] >= 123 && inputArr[i] <= 127) {
+            inputArr[i] = ' ';
+        }
+            return String.valueOf(inputArr).replace(" ","");
+        }
 
 
 
@@ -149,7 +172,8 @@ if(numbers1.length != numbers2.length)
         swapArrays(new int[]{1,3,4,5}, new int[]{2, 3, 5});
 
 
-       /* for (int i = 0; i < args.length; i++) {
+       /* Mitschrift 3. Übung:
+       for (int i = 0; i < args.length; i++) {
             System.out.println(args[i]); //um Argumente in der Main-Methode auszugeben;
         }
 
@@ -157,10 +181,10 @@ if(numbers1.length != numbers2.length)
         oneMonthCalendar(31,7);
 
 
-        //"einfangen des Wertes" Bsp. 4
-        //als Bsp: Array inline / Variable als Zwischenspeicher!
+        "einfangen des Wertes" Bsp. 4
+        als Bsp: Array inline / Variable als Zwischenspeicher!
         boolean returnValue = swapArrays(new int[]()...)
-        //eigentlich:
+        eigentlich:
         int []numbers1 = new int[10]; //Feld der Größe 10 wird erstellt
         numbers1[0] = 44; //Index 0 - Wert 44
         int x = numbers1[9];
@@ -168,10 +192,11 @@ if(numbers1.length != numbers2.length)
         int []numbers2 = {4,3,2}; //Kurzschreibweise - implizit Feldgröße 3 - idealerweise für Test verwenden
         numbers1[0] = 44;
 
-        //Methoden, die boolean ausgeben -> if-Statement sinnvoll
+        Methoden, die boolean ausgeben -> if-Statement sinnvoll
         if (!swapArrays(new int[] {4,3,2}, new int[] {4})) {
             System.out.println("ERROR");
-        }*/
+        }
+        */
 
     }
 }
